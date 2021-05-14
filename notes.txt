@@ -1,0 +1,123 @@
+
+
+creating article in blog post thru ACTIVE RECORD:
+    'rails g model article'
+        -creates a migration file: <timestamp>_create_articles.rb
+        -can be edited before migration
+
+        i.e. inside line with 'create_table :articles do |t|', add
+        t.string <column name in symbol> ==> t.string :name, t.string :body
+
+    'rails db:migrate'
+        -migrates db
+
+
+    'rails c'
+        -enables you to code rails in console
+        -parang 'irb' command
+        
+        'article = Article.new'
+            -gives attributes that can be accessed
+
+        'article.name = 'Sample''
+        'article.body = 'Body''
+
+        'article'
+            -to view current article
+
+        'article.save'
+            -displays a BEGIN and COMMIT message for db
+            -saves to db
+
+        'Article.all'
+            -to view all articles
+
+
+creating article in blog post thru ___ RECORD:
+
+        'article = Article.create(name:'sample again', body:'article body here')'
+            -no need to do .save
+            -can accept an arraylist if you want multiple inserts
+
+        'articles = Articles.all'
+        'articles'
+            -displays all contents of article table
+            -returns an array //useful for querying
+
+            Query Commands:
+                -Article.first, Article.second, Article.third, Article.last,
+                - .find_by --> expects something for arg, returns first instance of query i.e.: 'Article.find_by(name: 'Sample')'
+                - .find --> expects an id value as an arg i.e. Article.find(1)
+                - .where --> expects something for arg, returns multiple rows
+
+
+            Updating:
+                -.update --> no need to .save, rekta name
+                    i.e. article = Article.find(1); article.update(name: 'Article 1')
+
+                -.update_all --> multiple updates, can be used in array
+                    i.e. articles = Article.where(name: 'sample sample');
+                    articles.update_all(body: 'batch 6') --> updates all body content of queried records to 'batch 6'
+
+
+            Delete:
+                -.delete --> rekta delete
+                    i.e. article = Article.first; artice.delete (bye bye record)
+                -.delete_all
+
+                -.destroy --> with checking muna, safer
+                   
+
+https://tableplus.com/ --> gui db
+
+
+
+
+VALIDATION DISCUSSION:
+pag may model na, like the article model done in the prev discussion,
+go to article.rb:
+
+    class Artcile <  ApplicationRecord
+
+        validates :name, presence: true         #use presence attr for required field
+        validates :body, presence: true
+    end
+
+    #to test if validation works:
+
+    IN TERMINAL:
+    'rails c'
+    'article = Article.new'
+    'article.save'  ---> won't work bec article is saved without :name and :body
+        OUTPUTS: false
+    'article.errors' ---> displays the arraylist of error objects, tho not very clear
+    'article.errors.methods' ---> displays all methods
+    'article.errors.full_messages'
+        OUTPUTS: ["Name can't be blank", "Body can't be blank"]
+    'article.errors.messages'
+        OUTPUTS: {:name=>["can't be blank"] :body=>["can't be blank"]}
+
+    #if in case you use bang
+
+    'article.save!' ---> 
+        OUTPUTS: 
+
+    #for example, if there is a blank article, .valid? will output false before saving
+    #.errors will not be triggered yet before saving using .save
+    'article.valid?' ---> outputs a boolean
+
+    #when .create is used instead:
+    'article.persisted?' ---> checks if article proceeded to saving in the database
+
+
+    class Artcile <  ApplicationRecord
+
+        validates :name, presence: true,         #use presence attr for required field
+                         uniqueness: true
+        validates :body, presence: true
+                         length: {minimum: 5}
+    end
+
+    IN TERMINAL:
+    #after editing aplication.rb
+    'reload!' ---> updates the state of rails
