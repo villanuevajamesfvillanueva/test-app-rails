@@ -92,7 +92,7 @@ go to article.rb:
         OUTPUTS: false
     'article.errors' ---> displays the arraylist of error objects, tho not very clear
     'article.errors.methods' ---> displays all methods
-    'article.errors.full_messages'
+    'article.errors.full_message'
         OUTPUTS: ["Name can't be blank", "Body can't be blank"]
     'article.errors.messages'
         OUTPUTS: {:name=>["can't be blank"] :body=>["can't be blank"]}
@@ -124,8 +124,22 @@ go to article.rb:
 
 
 
-'rails g' ---> for model
-start server: pg_ctl start
-create db: rails db:create
-edit migration file: put in table attributes
-migrate db: rails db:migrate
+EXERCISE FOR TESTING VALIDATION:
+'rails g model article' ---> for creating model
+'pg_ctl start'  ---> starting postgresql server
+'rails db:create'
+    #in migration file under db folder, add articles table attributes
+'rails db:migrate'
+
+'rails c'
+'article = Article.new'
+'article.name = "Blog 1"'
+'article.body = "Blog 1 contents"'
+'article.save'
+
+'article = Article.new'
+'article.name = "Blog 1"'
+'article.body = " "'
+'article.valid?'
+    OUTPUTS: false
+'article,errors.full_message'
