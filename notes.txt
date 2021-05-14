@@ -1,5 +1,3 @@
-
-
 creating article in blog post thru ACTIVE RECORD:
     'rails g model article'
         -creates a migration file: <timestamp>_create_articles.rb
@@ -124,6 +122,9 @@ go to article.rb:
 
 
 
+
+
+
 EXERCISE FOR TESTING VALIDATION:
 'rails g model article' ---> for creating model
 'pg_ctl start'  ---> starting postgresql server
@@ -143,3 +144,4 @@ EXERCISE FOR TESTING VALIDATION:
 'article.valid?'
     OUTPUTS: false
 'article,errors.full_message'
+    OUTPUTS: array of readable error messages
