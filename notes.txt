@@ -121,3 +121,11 @@ go to article.rb:
     IN TERMINAL:
     #after editing aplication.rb
     'reload!' ---> updates the state of rails
+
+
+
+'rails g' ---> for model
+start server: pg_ctl start
+create db: rails db:create
+edit migration file: put in table attributes
+migrate db: rails db:migrate
