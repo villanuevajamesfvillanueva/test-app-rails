@@ -1,3 +1,5 @@
+'rails new blog' --> creates new blog application
+
 creating article in blog post thru ACTIVE RECORD:
     'rails g model article'
         -creates a migration file: <timestamp>_create_articles.rb
@@ -126,7 +128,7 @@ go to article.rb:
 
 
 EXERCISE FOR TESTING VALIDATION:
-'rails g model article' ---> for creating model
+'rails g model article' ---> for creating model, g -> generate
 'pg_ctl start'  ---> starting postgresql server
 'rails db:create'
     #in migration file under db folder, add articles table attributes
@@ -145,3 +147,30 @@ EXERCISE FOR TESTING VALIDATION:
     OUTPUTS: false
 'article,errors.full_message'
     OUTPUTS: array of readable error messages
+
+
+CONTROLLER DISCUSSION:
+'rails g controller articles' ---> 'articles' bec dapat plural ng model name
+    #creates an articles_controller.rb file
+
+        class ArticlesController < ApplicationController
+            #for example, making a get_all request for all articles
+            #stuff done in the console can be done here instead
+            def index
+                @articles = Article.all
+            end
+        end
+
+#create an index.html.erb under app/views/articles/
+#here, we can code both html and rails
+
+#after editing index.html.erb with html and rails code,
+#user can't still actually view the html template bec it has no routing yet thus,
+#edit routes.rb with get
+#try if it works
+
+'rails s' ---> to start server
+
+
+'rails routes'  ---> issue command outside rails console
+    OUTPUTS: routes

@@ -1,0 +1,23 @@
+<div>
+
+    <%= form_with url: article_create_path do |f| %>
+    <%# url attr is where the user is redirected once the form is submitted
+    url: use alias for value; you can view aliases by issuing the command:
+    rails routes outside rails console %>
+
+    <div>
+        <%= f.label :name %>
+        <%= f.text_field :name %>
+    </div>
+
+    <div>
+        <%= f.label :body %>
+        <%= f.text_field :body %>
+    </div>
+
+    <div>
+        <%= f.submit %>
+    <div>
+
+    <% end %>
+</div>
