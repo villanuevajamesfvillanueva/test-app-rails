@@ -176,3 +176,6 @@ CONTROLLER DISCUSSION:
     OUTPUTS: routes
 
 #don't forget to concat '_path' to route alias when calling it 
+
+
+edit edit edit
