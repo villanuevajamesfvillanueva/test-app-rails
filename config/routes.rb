@@ -4,6 +4,6 @@ Rails.application.routes.draw do
   #get syntax: '<route>' => '<controller>#<method>'
   get '/articles' => 'articles#index'
   get '/articles/new' => 'articles#new'
-  post '/articles' => 'articles#create' as: article_create
+  post '/articles' => 'articles#create', as: 'article_create'
   
 end

@@ -174,3 +174,5 @@ CONTROLLER DISCUSSION:
 
 'rails routes'  ---> issue command outside rails console
     OUTPUTS: routes
+
+#don't forget to concat '_path' to route alias when calling it 

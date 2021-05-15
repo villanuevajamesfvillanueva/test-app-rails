@@ -19,11 +19,16 @@ class ArticlesController < ApplicationController
             @article.save
             redirect_to articles_path
             
-        else render :new
+        else
+            render :new
+
+        end
+    end
+
+    private
+    def article_params
+        params.require(:article).permit(:name, :body)
     end
 end
 
-private
-def article_params
-    params.require(:article).permit(:name, :body)
-end
+
