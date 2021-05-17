@@ -1,6 +1,6 @@
 class ArticlesController < ApplicationController
     def index                       #name convention for method that displays all
-        @articles = Article.all
+        @articles = Article.all.order("created_at DESC")
     end
 
     def new                         #name convention for method that creates new
@@ -36,12 +36,11 @@ class ArticlesController < ApplicationController
         end
     end
 
-    # def delete
-    #     @article = Article.find(params[:id])
-    #     @article.destroy
-    #     flash[:notice] = "Article has been deleted."
-    #     redirect_to articles_path
-    # end
+    def destroy
+        @article = Article.find(params[:id])
+        @article.destroy
+        redirect_to '/'
+    end
 
 
     private

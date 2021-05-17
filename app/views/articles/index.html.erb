@@ -21,8 +21,8 @@
         <table class='table table-borderless'>
             <thead>
                 <tr>
-                    <th scope="col">ID</th>
-                    <th scope="col">Name</th>
+                    <!--<th scope="col">ID</th>-->
+                    <th scope="col">Title</th>
                     <th scope="col">Body</th>
                 </tr>
             </thead>
@@ -30,19 +30,19 @@
             <tbody>
                 <% @articles.each do |article| %>
                     <tr>
-                        <td><%= article.id %></td>
+                        <!--<td><%#= article.id %></td>-->
                         <td><%= article.name %></td>
                         <td><%= article.body %></td>
                         <td><a href="/articles/<%= article.id %>">View</a></td>
                         <%# need to change this to link_to %>
                         <td><a href="/articles/<%= article.id %>/edit">Edit</td>
-                        <td>Delete</td>
+                        <td><%= link_to 'Delete', articles_delete_path(article), method: :delete, data: { confirm: "Are you sure?" } %></td>
                     </tr>
                 <% end %>
             </tbody>
         </table>
 
-        <%= link_to 'New Article', articles_new_path, class: 'btn btn-primary'%>
+        <%= link_to 'New Blog', articles_new_path, class: 'btn btn-primary'%>
         <%# <a href='/articles/new' class='btn btn-primary'>New Article</a> %>
     </div>
     
