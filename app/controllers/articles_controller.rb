@@ -8,7 +8,6 @@ class ArticlesController < ApplicationController
         @article = Article.new
     end
 
-
     def create
         # @article = Article.new
         # @article.name = params[:name]
@@ -17,7 +16,7 @@ class ArticlesController < ApplicationController
 
         if @article.valid?
             @article.save
-            redirect_to articles_path
+            redirect_to '/'
             
         else
             render :new
