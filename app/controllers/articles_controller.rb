@@ -1,5 +1,4 @@
 class ArticlesController < ApplicationController
-
     def index                       #name convention for method that displays all
         @articles = Article.all
     end
@@ -23,6 +22,27 @@ class ArticlesController < ApplicationController
             render :new
         end
     end
+
+    def edit
+        @article = Article.find(params[:id])
+    end
+
+    def update
+        @article = Article.find(params[:id])
+        if @article.update(article_params)
+            redirect_to '/'
+        else
+            render :edit
+        end
+    end
+
+    # def delete
+    #     @article = Article.find(params[:id])
+    #     @article.destroy
+    #     flash[:notice] = "Article has been deleted."
+    #     redirect_to articles_path
+    # end
+
 
     private
     def article_params

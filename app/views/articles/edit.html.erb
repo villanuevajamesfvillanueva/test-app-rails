@@ -16,7 +16,37 @@
   <body>
     <%= render 'articles/nav' %>
     <div class='container'>
-        <%= render 'form', article: @article %>
+        <%= form_with scope: :article, url: articles_update_path, method: :put, local: true do |f| %>
+        <%# url attr is where the user is redirected once the form is submitted
+        url: use alias for value; you can view aliases by issuing the command:
+        rails routes outside rails console %>
+
+    <div>
+        <% if @article.errors.any? %>
+        <ul>
+            <% @article.errors.full_messages.each do |msg| %>
+                <li class="alert alert-danger" role="alert" ><%= msg %></li>
+            <% end %>
+        </ul>
+        <% end %>
+    </div>
+
+
+    <div>
+        <%= f.label :name %>
+        <%= f.text_field :name %>
+    </div>
+
+    <div>
+        <%= f.label :body %>
+        <%= f.text_area :body, size: '100x7' %>
+    </div>
+
+    <div>
+        <%= f.submit %>
+    </div>
+
+<% end %>
     </div>
     
 
@@ -37,10 +67,6 @@
     -->
   </body>
 </html>
-
-
-
-
 
 
 

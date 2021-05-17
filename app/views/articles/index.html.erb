@@ -35,7 +35,7 @@
                         <td><%= article.body %></td>
                         <td><a href="/articles/<%= article.id %>">View</a></td>
                         <%# need to change this to link_to %>
-                        <td>Edit</td>
+                        <td><a href="/articles/<%= article.id %>/edit">Edit</td>
                         <td>Delete</td>
                     </tr>
                 <% end %>
