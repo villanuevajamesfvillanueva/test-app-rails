@@ -13,14 +13,11 @@ class ArticlesController < ApplicationController
     end
 
     def create
-        # @article = Article.new
-        # @article.name = params[:name]
-        # @article.body = params[:body]
         @article = Article.new(article_params)
 
         if @article.valid?
             @article.save
-            redirect_to '/'
+            redirect_to '/' 
             
         else
             render :new
@@ -31,6 +28,7 @@ class ArticlesController < ApplicationController
     def article_params
         params.require(:article).permit(:name, :body)
     end
+
 end
 
 

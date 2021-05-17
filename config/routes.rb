@@ -5,8 +5,10 @@ Rails.application.routes.draw do
   root 'articles#index'
 
   get '/articles', to: 'articles#index'
+  get '/articles/new', to: 'articles#new', as: 'articles_new'
   get '/articles/:id', to: 'articles#show', as: 'articles_show'
-  get '/articles/new' => 'articles#new'
   post '/articles' => 'articles#create', as: 'article_create'
+  
+
   
 end
