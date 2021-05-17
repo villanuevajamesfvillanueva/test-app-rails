@@ -14,36 +14,15 @@
 
 
   <body>
+    
+
     <%= render 'articles/nav' %>
     <div class='container'>
         <br/>
-        <h1>Welcome to this test blogsite!</h1>
-        <table class='table table-borderless'>
-            <thead>
-                <tr>
-                    <th scope="col">ID</th>
-                    <th scope="col">Name</th>
-                    <th scope="col">Body</th>
-                </tr>
-            </thead>
+        <h1><%= @article.name %></h1>
+        <p><%= @article.body %></p>
 
-            <tbody>
-                <% @articles.each do |article| %>
-                    <tr>
-                        <td><%= article.id %></td>
-                        <td><%= article.name %></td>
-                        <td><%= article.body %></td>
-                        <td><a href="/articles/<%= article.id %>">View</a></td>
-                        <%# need to change this to link_to %>
-                        <td>Edit</td>
-                        <td>Delete</td>
-                    </tr>
-                <% end %>
-            </tbody>
-        </table>
-
-        
-        <a href='/articles/new' class='btn btn-primary'>New Article</a>
+        <%= link_to 'Home', '/', class: 'btn btn-primary'%>
     </div>
     
 
