@@ -6,25 +6,29 @@
     
     <script>
             $(function () {
-        $(".increment").click(function () {
-            var count = parseInt($("~ .count", this).text());
+                $(".increment").click(function () {
+                    var count = parseInt($("~ .count", this).text());
 
-            if ($(this).hasClass("up")) {
-            var count = count + 1;
+                    if ($(this).hasClass("up")) {
+                        var count = count + 1;
+                        $("~ .count", this).text(count);
+                    }
+                    
+                    else {
+                        var count = count - 1;
+                        $("~ .count", this).text(count);
+                    }
 
-            $("~ .count", this).text(count);
-            } else {
-            var count = count - 1;
-            $("~ .count", this).text(count);
-            }
+                    $(this).parent().addClass("bump");
 
-            $(this).parent().addClass("bump");
+                    setTimeout(function () {
+                        $(this).parent().removeClass("bump");
+                    }, 400);
+                });
+            });
 
-            setTimeout(function () {
-            $(this).parent().removeClass("bump");
-            }, 400);
-        });
-        });
+            //limit voting to only 1 per user
+            //use local storage maybe? cookies?
 
     </script>
     <!-- Option 2: Separate Popper and Bootstrap JS -->
