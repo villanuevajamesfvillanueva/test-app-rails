@@ -1,0 +1,95 @@
+:root {
+  --circle-dim: 3rem;
+  --upvote: #161516;
+  --downvote: #161516;
+}
+
+.circle .up {
+  border-radius: var(--circle-dim) var(--circle-dim) 0 0;
+}
+.circle .down {
+  border-radius: 0 0 var(--circle-dim) var(--circle-dim);
+}
+.circle .count {
+  border-radius: 50%;
+}
+
+.vote {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  width: 3rem;
+  height: 3rem;
+  margin: 1rem;
+  /* background-color: red; */
+}
+
+.increment {
+  flex: 1 0 0;
+  text-align: center;
+  opacity: 0.5;
+  transition: 0.3s;
+  cursor: pointer;
+}
+.increment.up {
+  background: var(--upvote);
+  height: 50%;
+  margin-bottom: 0.25rem;
+}
+.increment.down {
+  background: var(--downvote);
+  height: 50%;
+}
+.increment:hover {
+  opacity: 1;
+  background:#ff754c;
+}
+
+.count {
+  position: absolute;
+  top: 0;
+  border-radius: 0.1rem;
+  margin: 1rem;
+  background: #F6F3E4;
+  width: 1.0rem;
+  height: 1.0rem;
+  font-size: 0.75rem;
+  text-align: center;
+  box-shadow: 0 0 0 0.5rem #F6F3E4;
+  line-height: 1rem;
+  pointer-events: none;
+}
+.count.upvoted {
+  color: var(--upvote);
+}
+.count.downvoted {
+  color: var(--downvote);
+}
+
+.bump {
+  -webkit-animation: bump 200ms;
+          animation: bump 200ms;
+}
+
+@-webkit-keyframes bump {
+  30% {
+    transform: scale(1.2);
+  }
+}
+
+@keyframes bump {
+  30% {
+    transform: scale(1.2);
+  }
+}
+* {
+  box-sizing: border-box;
+}
+
+
+
+
+.table td, .table th, .table tr {
+  text-align: center;   
+
+}

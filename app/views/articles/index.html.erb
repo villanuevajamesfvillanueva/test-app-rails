@@ -12,8 +12,9 @@
             <thead>
                 <tr>
                     <!--<th scope="col">ID</th>-->
+                    <th>Votes</th>
                     <th scope="col" class="w-25">Title</th>
-                    <th scope="col">Body</th>
+                    <th scope="col" class="w-75">Body</th>
                 </tr>
             </thead>
 
@@ -21,11 +22,12 @@
                 <% @articles.each do |article| %>
                     <tr>
                         <!--<td><%#= article.id %></td>-->
-                        <td><%= article.name %></td>
-                        <td><%= article.body[0..170] %></td>
-                        <td><%= link_to 'View', articles_show_path(article), method: :get %></td>
-                        <td><%= link_to 'Edit', articles_edit_path(article), method: :get %></td>
-                        <td><%= link_to 'Delete', articles_delete_path(article), method: :delete, data: { confirm: "Are you sure?" } %></td>
+                        <td class="align-middle"><%= render 'articles/votes' %></td>
+                        <td class="align-middle"><%= article.name %></td>
+                        <td class="align-middle"><%= article.body[0..160] %></td>
+                        <td class="align-middle"><%= link_to 'View', articles_show_path(article), method: :get %></td>
+                        <td class="align-middle"><%= link_to 'Edit', articles_edit_path(article), method: :get %></td>
+                        <td class="align-middle"><%= link_to 'Delete', articles_delete_path(article), method: :delete, data: { confirm: "Are you sure?" } %></td>
                     </tr>
                 <% end %>
             </tbody>
