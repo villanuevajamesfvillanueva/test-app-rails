@@ -1,6 +1,6 @@
 class ArticlesController < ApplicationController
     def index                       #name convention for method that displays all
-        @articles = Article.all.order("created_at DESC")
+        @articles = Article.all.order("updated_at DESC")
     end
 
     def new                         #name convention for method that creates new
