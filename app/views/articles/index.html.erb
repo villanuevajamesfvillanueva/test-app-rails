@@ -23,9 +23,8 @@
                         <!--<td><%#= article.id %></td>-->
                         <td><%= article.name %></td>
                         <td><%= article.body[0..170] %></td>
-                        <td><a href="/articles/<%= article.id %>">View</a></td>
-                        <%# need to change this to link_to %>
-                        <td><a href="/articles/<%= article.id %>/edit">Edit</td>
+                        <td><%= link_to 'View', articles_show_path(article), method: :get %></td>
+                        <td><%= link_to 'Edit', articles_edit_path(article), method: :get %></td>
                         <td><%= link_to 'Delete', articles_delete_path(article), method: :delete, data: { confirm: "Are you sure?" } %></td>
                     </tr>
                 <% end %>
